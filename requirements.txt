@@ -1,0 +1,19 @@
+# Web Framework & API Server
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+python-multipart>=0.0.9
+requests>=2.31.0
+
+# Computer Vision & OCR
+opencv-python-headless>=4.9.0.80
+pytesseract>=0.3.10
+
+# Deep Learning (IndoBERT Level 1)
+torch>=2.0.0
+transformers>=4.38.0
+
+# Machine Learning & Vektorisasi (Level 2 kNN TF-IDF)
+scikit-learn>=1.3.0
+joblib>=1.3.0
+numpy>=1.24.0
+pandas>=2.0.0

@@ -1,0 +1,147 @@
+# ==============================================================================
+# .gitignore untuk Proyek Skripsi Sistem Otomasi Klasifikasi DDC Berbasis AI
+# Melindungi kredensial rahasia, dependensi pustaka, berkas kompilasi,
+# artefak sistem operasi/IDE, dan bobot model AI berukuran besar (>100 MB).
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Kredensial, Rahasia, & Variabel Lingkungan (Secrets & Environment)
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.key
+*.pem
+*.cert
+*.crt
+
+# Pengecualian: Pertahankan templat konfigurasi agar rekan/penguji tahu formatnya
+!.env.example
+
+# ------------------------------------------------------------------------------
+# 2. Lingkungan Virtual Python (Virtual Environments)
+# ------------------------------------------------------------------------------
+# Lingkungan virtual proyek lokal skripsi
+skripsi/
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ------------------------------------------------------------------------------
+# 3. Berkas Kompilasi & Cache Python (Python Bytecode & Caches)
+# ------------------------------------------------------------------------------
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Pengujian & Analisis Kualitas Kode (Testing & Linting)
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+
+# ------------------------------------------------------------------------------
+# 4. Bobot Model AI Berukuran Raksasa (> 100 MB - Melebihi Batas GitHub)
+# Catatan: GitHub memiliki batas berkas maksimal 100 MB per file.
+# Berkas 'backend/model_ai/checkpoint-3444/model.safetensors' berukuran ~475 MB
+# wajib di-ignore agar proses 'git push' tidak ditolak oleh server GitHub.
+# Jika ingin melacak bobot ini di Git, gunakan Git LFS (git lfs track "*.safetensors").
+# ------------------------------------------------------------------------------
+*.safetensors
+*.pth
+*.pt
+*.ckpt
+*.bin
+*.h5
+*.tflite
+*.onnx
+
+# Pengecualian: Tetap simpan berkas konfigurasi kecil model & tokenizer di Git
+!backend/model_ai/checkpoint-3444/config.json
+!backend/model_ai/checkpoint-3444/tokenizer.json
+!backend/model_ai/checkpoint-3444/tokenizer_config.json
+!backend/model_ai/checkpoint-3444/trainer_state.json
+
+# ------------------------------------------------------------------------------
+# 5. Dependensi & Artefak Frontend (Node.js, Vite, React)
+# ------------------------------------------------------------------------------
+node_modules/
+*/node_modules/
+*/*/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Hasil Kompilasi Produksi Frontend
+frontend/ddc-website/dist/
+frontend/ddc-website/dist-ssr/
+frontend/ddc-website/.vite/
+.vite/
+*.local
+
+# ------------------------------------------------------------------------------
+# 6. Artefak Sistem Operasi (macOS & Windows)
+# ------------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ------------------------------------------------------------------------------
+# 7. Pengaturan IDE & Editor Teks (VS Code, JetBrains, Sublime)
+# ------------------------------------------------------------------------------
+.idea/
+*.iml
+.vscode/
+!.vscode/extensions.json
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ------------------------------------------------------------------------------
+# 8. Berkas Log & Output Sementara (Logs & Scratch Dumps)
+# ------------------------------------------------------------------------------
+logs/
+*.log
+tmp/
+temp/
