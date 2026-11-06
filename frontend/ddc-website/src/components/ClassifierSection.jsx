@@ -422,10 +422,11 @@ export default function ClassifierSection() {
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#007de4] mb-2 block">
-            Modul Katalogisasi
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#002072] text-[#f9a825] border border-[#f9a825]/40 text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-[#f9a825] shadow-xs shadow-amber-400/50" />
+            <span>Modul Katalogisasi</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#002072] tracking-tight">
             Klasifikasi Koleksi Buku
           </h2>
           <p className="mt-2 text-slate-600 text-sm sm:text-base">
@@ -435,30 +436,30 @@ export default function ClassifierSection() {
 
         {/* Tab Pemilihan Alur Masukan */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex p-1 rounded-xl bg-slate-100 border border-slate-200">
+          <div className="inline-flex p-1.5 rounded-xl bg-slate-100 border border-slate-200 shadow-2xs">
             <button
               type="button"
               onClick={() => { setActiveTab('visual'); setOcrError(null); }}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeTab === 'visual'
-                  ? 'bg-white text-[#007de4] shadow-xs'
+                  ? 'bg-[#002072] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Camera className="w-4 h-4" />
+              <Camera className={`w-4 h-4 ${activeTab === 'visual' ? 'text-[#f9a825]' : 'text-slate-500'}`} />
               <span>Jalur 1: Foto KDT / Barcode</span>
             </button>
 
             <button
               type="button"
               onClick={() => { setActiveTab('manual'); setOcrError(null); }}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeTab === 'manual'
-                  ? 'bg-white text-[#007de4] shadow-xs'
+                  ? 'bg-[#002072] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <FileText className="w-4 h-4" />
+              <FileText className={`w-4 h-4 ${activeTab === 'manual' ? 'text-[#f9a825]' : 'text-slate-500'}`} />
               <span>Jalur 2: Input Manual</span>
             </button>
           </div>
@@ -511,18 +512,18 @@ export default function ClassifierSection() {
                       <button
                         type="button"
                         onClick={handleSmartCameraClick}
-                        className="group flex flex-col items-center justify-center p-6 rounded-xl bg-[#007de4] hover:bg-[#0066be] active:bg-[#005096] text-white shadow-xs transition-all cursor-pointer text-center"
+                        className="group flex flex-col items-center justify-center p-6 rounded-xl bg-gradient-to-br from-[#002072] to-[#001755] hover:to-[#002072] text-white shadow-md transition-all cursor-pointer text-center border border-blue-900/60"
                       >
-                        <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-3 text-white transition-transform group-hover:scale-105">
-                          <Camera className="w-6 h-6 text-[#fbd900]" />
+                        <div className="w-12 h-12 rounded-xl bg-white/10 border border-[#f9a825]/40 flex items-center justify-center mb-3 text-white transition-transform group-hover:scale-105">
+                          <Camera className="w-6 h-6 text-[#f9a825]" />
                         </div>
                         <span className="font-bold text-sm tracking-wide">
                           Ambil Foto Kamera
                         </span>
-                        <span className="text-xs text-white/85 mt-1 leading-snug max-w-xs">
+                        <span className="text-xs text-blue-100/85 mt-1 leading-snug max-w-xs">
                           Jepret foto KDT langsung dari kamera HP atau webcam laptop
                         </span>
-                        <div className="mt-3 px-2.5 py-0.5 rounded-md bg-[#fbd900] text-slate-950 text-[10px] font-bold uppercase tracking-wider">
+                        <div className="mt-3 px-3 py-1 rounded-md bg-[#f9a825] text-[#002072] text-[10px] font-extrabold uppercase tracking-wider shadow-xs">
                           Kamera Perangkat
                         </div>
                       </button>
@@ -531,7 +532,7 @@ export default function ClassifierSection() {
                       <button
                         type="button"
                         onClick={() => fileInputRef.current?.click()}
-                        className="group flex flex-col items-center justify-center p-6 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#007de4] text-slate-800 transition-all cursor-pointer text-center shadow-xs"
+                        className="group flex flex-col items-center justify-center p-6 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#1e88e5] text-slate-800 transition-all cursor-pointer text-center shadow-xs"
                       >
                         <div className="w-12 h-12 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center mb-3 transition-transform group-hover:scale-105">
                           <Upload className="w-6 h-6 text-slate-700" />
@@ -557,7 +558,7 @@ export default function ClassifierSection() {
                         if (e.dataTransfer.files?.[0]) handleFileChange(e.dataTransfer.files[0]);
                       }}
                       onClick={() => fileInputRef.current?.click()}
-                      className="border border-dashed border-slate-300 hover:border-[#007de4] bg-slate-50/60 rounded-lg p-3 text-center transition-colors cursor-pointer group"
+                      className="border border-dashed border-slate-300 hover:border-[#1e88e5] bg-slate-50/60 rounded-lg p-3 text-center transition-colors cursor-pointer group"
                     >
                       <p className="text-xs text-slate-500 group-hover:text-slate-700">
                         Atau seret & lepas berkas foto ke sini (JPG, PNG, WEBP maks. 5 MB)
@@ -574,7 +575,7 @@ export default function ClassifierSection() {
                       />
                       {isOcrLoading && (
                         <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-xs flex flex-col items-center justify-center text-white p-3 text-center">
-                          <Loader2 className="w-6 h-6 animate-spin text-[#fbd900] mb-2" />
+                          <Loader2 className="w-6 h-6 animate-spin text-[#f9a825] mb-2" />
                           <span className="text-xs font-semibold">Mengekstrak ISBN & Metadata...</span>
                         </div>
                       )}
@@ -590,7 +591,7 @@ export default function ClassifierSection() {
                             <button
                               type="button"
                               onClick={() => setIsCropModalOpen(true)}
-                              className="text-xs font-semibold text-[#007de4] hover:underline cursor-pointer flex items-center gap-1"
+                              className="text-xs font-semibold text-[#1e88e5] hover:underline cursor-pointer flex items-center gap-1"
                             >
                               <Crop className="w-3.5 h-3.5" />
                               <span>Pangkas Ulang</span>
@@ -629,7 +630,7 @@ export default function ClassifierSection() {
                       {/* Status Deteksi OCR */}
                       <div className="mt-3.5 flex flex-wrap items-center gap-2">
                         {isOcrLoading ? (
-                          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#f0f7fd] text-[#007de4] text-xs font-medium">
+                          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#ebf3fc] text-[#1e88e5] text-xs font-medium">
                             <Loader2 className="w-3.5 h-3.5 animate-spin" />
                             <span>Mendeteksi nomor ISBN dari foto buku...</span>
                           </div>
@@ -647,7 +648,7 @@ export default function ClassifierSection() {
                 {/* Catatan Panduan Awal (Saat belum ada foto yang diunggah) */}
                 {!selectedFile && ocrStatus === 'idle' && (
                   <div className="mt-4 p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-600 text-xs flex items-center gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#007de4] shrink-0" />
+                    <span className="w-2 h-2 rounded-full bg-[#1e88e5] shrink-0" />
                     <span>
                       Pilih atau jepret foto halaman KDT / barcode buku. Formulir konfirmasi data buku akan dimunculkan secara otomatis setelah hasil ekstraksi siap.
                     </span>
@@ -688,7 +689,7 @@ export default function ClassifierSection() {
                             }
                           }}
                           placeholder="Ketik 10 atau 13 digit ISBN (Contoh: 9786020652283)"
-                          className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#007de4] focus:border-transparent text-sm bg-white font-mono"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#1e88e5] focus:border-transparent text-sm bg-white font-mono"
                           autoFocus
                         />
                       </div>
@@ -696,11 +697,11 @@ export default function ClassifierSection() {
                         type="button"
                         onClick={() => handleLookupIsbn()}
                         disabled={isLookupLoading || !isbn.trim()}
-                        className="px-6 py-3 rounded-xl bg-[#007de4] hover:bg-[#0066be] active:bg-[#005096] disabled:bg-slate-300 disabled:cursor-not-allowed text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
+                        className="px-6 py-3 rounded-xl bg-[#1e88e5] hover:bg-[#1976d2] active:bg-[#1565c0] disabled:bg-slate-300 disabled:cursor-not-allowed text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
                       >
                         {isLookupLoading ? (
                           <>
-                            <Loader2 className="w-4 h-4 animate-spin text-[#fbd900]" />
+                            <Loader2 className="w-4 h-4 animate-spin text-[#f9a825]" />
                             <span>Mencari Katalog...</span>
                           </>
                         ) : (
@@ -722,7 +723,7 @@ export default function ClassifierSection() {
                             <button
                               type="button"
                               onClick={() => setForceShowManualForm(true)}
-                              className="font-bold text-[#007de4] hover:underline cursor-pointer"
+                              className="font-bold text-[#1e88e5] hover:underline cursor-pointer"
                             >
                               Lengkapi Judul & Pengarang secara manual &rarr;
                             </button>
@@ -737,7 +738,7 @@ export default function ClassifierSection() {
                       <button
                         type="button"
                         onClick={() => setForceShowManualForm(true)}
-                        className="font-semibold text-[#007de4] hover:underline cursor-pointer"
+                        className="font-semibold text-[#1e88e5] hover:underline cursor-pointer"
                       >
                         Lewati ke Pengisian Judul Manual &rarr;
                       </button>
@@ -807,7 +808,7 @@ export default function ClassifierSection() {
                         value={isbn}
                         onChange={(e) => setIsbn(e.target.value)}
                         placeholder="Contoh: 9786020652283"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#007de4] focus:border-transparent text-sm bg-white font-mono"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#1e88e5] focus:border-transparent text-sm bg-white font-mono"
                       />
                       {isbn.length >= 10 && (
                         <button
@@ -815,10 +816,10 @@ export default function ClassifierSection() {
                           onClick={() => handleLookupIsbn()}
                           disabled={isLookupLoading}
                           title="Cari ulang metadata berdasarkan ISBN ini"
-                          className="absolute right-2 top-2 p-1.5 rounded-lg bg-slate-100 hover:bg-[#e6f3fc] text-slate-600 hover:text-[#007de4] transition-colors cursor-pointer"
+                          className="absolute right-2 top-2 p-1.5 rounded-lg bg-slate-100 hover:bg-[#ebf3fc] text-slate-600 hover:text-[#1e88e5] transition-colors cursor-pointer"
                         >
                           {isLookupLoading ? (
-                            <Loader2 className="w-4 h-4 animate-spin text-[#007de4]" />
+                            <Loader2 className="w-4 h-4 animate-spin text-[#1e88e5]" />
                           ) : (
                             <Search className="w-4 h-4" />
                           )}
@@ -849,7 +850,7 @@ export default function ClassifierSection() {
                       onChange={(e) => setJudul(e.target.value)}
                       placeholder="Contoh: Pengantar Akuntansi Dasar Keuangan"
                       aria-describedby="judul-hint"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#007de4] focus:border-transparent text-sm bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#1e88e5] focus:border-transparent text-sm bg-white"
                     />
                     <div className="field-error hidden text-rose-600 text-xs mt-1 items-center gap-1">
                       <AlertTriangle className="w-3.5 h-3.5" />
@@ -868,7 +869,7 @@ export default function ClassifierSection() {
                       value={pengarang}
                       onChange={(e) => setPengarang(e.target.value)}
                       placeholder="Contoh: Warren Reeve Fess"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#007de4] focus:border-transparent text-sm bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#1e88e5] focus:border-transparent text-sm bg-white"
                     />
                     <p className="text-[11px] text-slate-400 mt-1">
                       Nama pengarang membantu model membedakan konteks keilmuan secara lebih spesifik.
@@ -901,11 +902,11 @@ export default function ClassifierSection() {
                   <button
                     type="submit"
                     disabled={isClassifying || judul.trim().length < 3}
-                    className="px-7 py-3 rounded-lg bg-[#007de4] hover:bg-[#0066be] active:bg-[#005096] disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-semibold text-xs sm:text-sm tracking-wide shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
+                    className="px-8 py-3.5 rounded-xl bg-[#f9a825] hover:bg-[#e69516] active:bg-[#d4840f] disabled:bg-slate-300 disabled:cursor-not-allowed text-[#002072] disabled:text-slate-500 font-extrabold text-xs sm:text-sm tracking-wide shadow-md shadow-amber-500/25 transition-all flex items-center gap-2 cursor-pointer hover:scale-[1.01] active:scale-[0.99]"
                   >
                     {isClassifying ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin text-[#fbd900]" />
+                        <Loader2 className="w-4 h-4 animate-spin text-[#002072]" />
                         <span>Sedang Mengklasifikasikan...</span>
                       </>
                     ) : (
@@ -975,11 +976,11 @@ export default function ClassifierSection() {
                   </span>
 
                   {results.prediksi_utama && (
-                    <div className="flex-1 rounded-xl bg-slate-800/80 p-6 sm:p-8 border-l-4 border-l-[#fbd900] border-t border-r border-b border-slate-700/80 shadow-md flex flex-col justify-between relative group">
+                    <div className="flex-1 rounded-xl bg-slate-800/80 p-6 sm:p-8 border-l-4 border-l-[#f9a825] border-t border-r border-b border-slate-700/80 shadow-md flex flex-col justify-between relative group">
                       
                       {/* Badge Prediksi Utama Emas */}
                       <div className="flex items-center justify-between mb-6">
-                        <span className="px-2.5 py-1 rounded-md bg-[#fbd900] text-slate-950 font-bold text-xs uppercase tracking-wider shadow-xs">
+                        <span className="px-2.5 py-1 rounded-md bg-[#f9a825] text-slate-950 font-bold text-xs uppercase tracking-wider shadow-xs">
                           Prediksi Utama
                         </span>
 
@@ -1007,7 +1008,7 @@ export default function ClassifierSection() {
                         <div className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">
                           Notasi DDC Desimal
                         </div>
-                        <div className="text-5xl sm:text-6xl font-black text-[#007de4] font-mono tracking-tight group-hover:text-white transition-colors">
+                        <div className="text-5xl sm:text-6xl font-black text-[#1e88e5] font-mono tracking-tight group-hover:text-white transition-colors">
                           {results.prediksi_utama.kode_ddc}
                         </div>
                         <div className="mt-3 text-lg font-bold text-slate-200">
@@ -1022,13 +1023,13 @@ export default function ClassifierSection() {
                       <div className="mt-6 pt-4 border-t border-slate-700/80">
                         <div className="flex justify-between items-center text-xs mb-1.5">
                           <span className="text-slate-400 font-medium">Skor Keyakinan Relatif</span>
-                          <span className="font-bold text-[#fbd900] text-sm font-mono">
+                          <span className="font-bold text-[#f9a825] text-sm font-mono">
                             {results.prediksi_utama.confidence_pct}%
                           </span>
                         </div>
                         <div className="w-full h-2 bg-slate-700/80 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-[#007de4] rounded-full transition-all duration-500"
+                            className="h-full bg-[#1e88e5] rounded-full transition-all duration-500"
                             style={{ width: `${Math.min(100, results.prediksi_utama.confidence_pct)}%` }}
                           />
                         </div>
@@ -1057,14 +1058,14 @@ export default function ClassifierSection() {
                           key={item.kode_ddc}
                           className={`p-3.5 rounded-lg border transition-colors ${
                             isTop
-                              ? 'bg-slate-800 border-l-4 border-l-[#fbd900] border-slate-700'
+                              ? 'bg-slate-800 border-l-4 border-l-[#f9a825] border-slate-700'
                               : 'bg-slate-800/50 border-slate-800 hover:border-slate-700'
                           }`}
                         >
                           <div className="flex items-center justify-between gap-3 mb-2">
                             <div className="flex items-center gap-3">
                               <span className={`w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold ${
-                                isTop ? 'bg-[#fbd900] text-slate-950' : 'bg-slate-700 text-slate-300'
+                                isTop ? 'bg-[#f9a825] text-slate-950' : 'bg-slate-700 text-slate-300'
                               }`}>
                                 {item.rank}
                               </span>
@@ -1101,7 +1102,7 @@ export default function ClassifierSection() {
                           <div className="w-full h-1.5 bg-slate-700/60 rounded-full overflow-hidden">
                             <div
                               className={`h-full rounded-full transition-all duration-300 ${
-                                isTop ? 'bg-[#fbd900]' : 'bg-[#007de4]'
+                                isTop ? 'bg-[#f9a825]' : 'bg-[#1e88e5]'
                               }`}
                               style={{ width: `${Math.min(100, Math.max(3, item.confidence_pct))}%` }}
                             />
@@ -1142,7 +1143,7 @@ export default function ClassifierSection() {
             {/* Header Modal */}
             <div className="px-5 py-3.5 border-b border-slate-200 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-[#007de4]/10 text-[#007de4] flex items-center justify-center">
+                <div className="w-7 h-7 rounded-lg bg-[#1e88e5]/10 text-[#1e88e5] flex items-center justify-center">
                   <Crop className="w-4 h-4" />
                 </div>
                 <div>
@@ -1179,17 +1180,17 @@ export default function ClassifierSection() {
 
               {/* Kotak Bidik Area KDT jika mode 'kdt' aktif */}
               {cropOption === 'kdt' && (
-                <div className="absolute inset-x-8 sm:inset-x-12 inset-y-8 sm:inset-y-12 pointer-events-none border-2 border-[#fbd900] bg-[#fbd900]/10 rounded-lg flex flex-col justify-between p-2">
+                <div className="absolute inset-x-8 sm:inset-x-12 inset-y-8 sm:inset-y-12 pointer-events-none border-2 border-[#f9a825] bg-[#f9a825]/10 rounded-lg flex flex-col justify-between p-2">
                   <div className="flex justify-between">
-                    <span className="w-3 h-3 border-t-2 border-l-2 border-[#fbd900]" />
-                    <span className="w-3 h-3 border-t-2 border-r-2 border-[#fbd900]" />
+                    <span className="w-3 h-3 border-t-2 border-l-2 border-[#f9a825]" />
+                    <span className="w-3 h-3 border-t-2 border-r-2 border-[#f9a825]" />
                   </div>
                   <div className="text-center bg-slate-900/80 px-2.5 py-0.5 rounded-full text-[10px] font-semibold text-white mx-auto shadow-sm">
                     Fokus Area ISBN / KDT
                   </div>
                   <div className="flex justify-between">
-                    <span className="w-3 h-3 border-b-2 border-l-2 border-[#fbd900]" />
-                    <span className="w-3 h-3 border-b-2 border-r-2 border-[#fbd900]" />
+                    <span className="w-3 h-3 border-b-2 border-l-2 border-[#f9a825]" />
+                    <span className="w-3 h-3 border-b-2 border-r-2 border-[#f9a825]" />
                   </div>
                 </div>
               )}
@@ -1203,7 +1204,7 @@ export default function ClassifierSection() {
                   onClick={() => setCropOption('kdt')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
                     cropOption === 'kdt'
-                      ? 'bg-[#007de4] text-white shadow-xs'
+                      ? 'bg-[#1e88e5] text-white shadow-xs'
                       : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
                   }`}
                 >
@@ -1215,7 +1216,7 @@ export default function ClassifierSection() {
                   onClick={() => setCropOption('full')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
                     cropOption === 'full'
-                      ? 'bg-[#007de4] text-white shadow-xs'
+                      ? 'bg-[#1e88e5] text-white shadow-xs'
                       : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
                   }`}
                 >
@@ -1239,7 +1240,7 @@ export default function ClassifierSection() {
                 <button
                   type="button"
                   onClick={() => handleConfirmCropAndUpload(cropOption)}
-                  className="px-4 py-2 rounded-lg bg-[#007de4] hover:bg-[#0066be] active:bg-[#005096] text-white text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-colors cursor-pointer"
+                  className="px-4 py-2 rounded-lg bg-[#1e88e5] hover:bg-[#1976d2] active:bg-[#1565c0] text-white text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-colors cursor-pointer"
                 >
                   <Check className="w-4 h-4" />
                   <span>Ekstrak OCR ({cropOption === 'kdt' ? 'Hasil Pangkas' : 'Foto Utuh'})</span>
@@ -1259,7 +1260,7 @@ export default function ClassifierSection() {
             {/* Header Modal Kamera */}
             <div className="px-5 py-4 border-b border-slate-800 flex items-center justify-between text-white">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#007de4]/20 text-[#007de4] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-[#1e88e5]/20 text-[#1e88e5] flex items-center justify-center">
                   <Camera className="w-4 h-4" />
                 </div>
                 <div>
@@ -1292,9 +1293,9 @@ export default function ClassifierSection() {
                       closeLiveCamera();
                       cameraInputRef.current?.click();
                     }}
-                    className="px-5 py-2.5 rounded-lg bg-[#007de4] hover:bg-[#0066be] active:bg-[#005096] text-white text-xs font-semibold transition-colors shadow-xs cursor-pointer inline-flex items-center gap-2"
+                    className="px-5 py-2.5 rounded-lg bg-[#1e88e5] hover:bg-[#1976d2] active:bg-[#1565c0] text-white text-xs font-semibold transition-colors shadow-xs cursor-pointer inline-flex items-center gap-2"
                   >
-                    <Smartphone className="w-4 h-4 text-[#fbd900]" />
+                    <Smartphone className="w-4 h-4 text-[#f9a825]" />
                     <span>Gunakan Kamera Bawaan HP</span>
                   </button>
                 </div>
@@ -1309,17 +1310,17 @@ export default function ClassifierSection() {
                   />
 
                   {/* Kotak Bidik Pemindai (Targeting Box) */}
-                  <div className="absolute inset-8 pointer-events-none border-2 border-dashed border-[#fbd900]/70 rounded-2xl flex flex-col justify-between p-3">
+                  <div className="absolute inset-8 pointer-events-none border-2 border-dashed border-[#f9a825]/70 rounded-2xl flex flex-col justify-between p-3">
                     <div className="flex justify-between items-start">
-                      <span className="w-4 h-4 border-t-2 border-l-2 border-[#fbd900]" />
-                      <span className="w-4 h-4 border-t-2 border-r-2 border-[#fbd900]" />
+                      <span className="w-4 h-4 border-t-2 border-l-2 border-[#f9a825]" />
+                      <span className="w-4 h-4 border-t-2 border-r-2 border-[#f9a825]" />
                     </div>
                     <div className="text-center bg-slate-950/70 backdrop-blur-xs py-1 px-3 rounded-full mx-auto text-[11px] font-medium text-white/95">
                       Posisikan ISBN atau halaman KDT di dalam kotak
                     </div>
                     <div className="flex justify-between items-end">
-                      <span className="w-4 h-4 border-b-2 border-l-2 border-[#fbd900]" />
-                      <span className="w-4 h-4 border-b-2 border-r-2 border-[#fbd900]" />
+                      <span className="w-4 h-4 border-b-2 border-l-2 border-[#f9a825]" />
+                      <span className="w-4 h-4 border-b-2 border-r-2 border-[#f9a825]" />
                     </div>
                   </div>
                 </>
@@ -1340,7 +1341,7 @@ export default function ClassifierSection() {
                   className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors cursor-pointer"
                   title="Gunakan Aplikasi Kamera Bawaan HP"
                 >
-                  <Smartphone className="w-4 h-4 text-[#fbd900]" />
+                  <Smartphone className="w-4 h-4 text-[#f9a825]" />
                   <span className="hidden sm:inline">Kamera HP</span>
                 </button>
 
@@ -1348,10 +1349,10 @@ export default function ClassifierSection() {
                 <button
                   type="button"
                   onClick={captureLivePhoto}
-                  className="w-16 h-16 rounded-full border-4 border-white/80 p-1 flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[#007de4]/30 cursor-pointer group"
+                  className="w-16 h-16 rounded-full border-4 border-white/80 p-1 flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[#1e88e5]/30 cursor-pointer group"
                   title="Ambil Foto Sekarang"
                 >
-                  <div className="w-full h-full rounded-full bg-[#fbd900] group-hover:bg-[#e5c500] flex items-center justify-center text-slate-950">
+                  <div className="w-full h-full rounded-full bg-[#f9a825] group-hover:bg-[#e69516] flex items-center justify-center text-slate-950">
                     <Camera className="w-6 h-6" />
                   </div>
                 </button>
@@ -1364,7 +1365,7 @@ export default function ClassifierSection() {
                     className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors cursor-pointer"
                     title="Ganti Kamera Depan / Belakang"
                   >
-                    <SwitchCamera className="w-4 h-4 text-[#007de4]" />
+                    <SwitchCamera className="w-4 h-4 text-[#1e88e5]" />
                     <span className="hidden sm:inline">Putar</span>
                   </button>
                 ) : (

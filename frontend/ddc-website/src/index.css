@@ -2,26 +2,81 @@
 
 @layer theme {
   :root {
-    --color-bi-blue: #007de4;
-    --color-bi-blue-dark: #0066be;
-    --color-bi-blue-active: #005096;
-    --color-bi-blue-light: #f0f7fd;
-    --color-bi-yellow: #fbd900;
-    --color-bi-yellow-hover: #e5c600;
-    --color-bi-yellow-light: #fffde6;
-    --color-bg-surface: #f3f6fb;
+    /* Palet Baru Sistem Klasifikasi DDC (Sesuai color_palette.jpg) */
+    --color-sapphire-base: #002072;     /* Primary Base: Deep Sapphire (Identitas & Penekanan) */
+    --color-sapphire-dark: #001755;     /* Deep Sapphire Dark */
+    --color-action-blue: #1e88e5;       /* Primary Action: Royal Blue Beam (Tombol & Elemen Interaktif) */
+    --color-action-hover: #1976d2;      /* Hover State Tombol Utama */
+    --color-action-active: #1565c0;     /* Active State Tombol Utama */
+    --color-action-light: #ebf3fc;      /* Surface Tint Biru Lembut */
+    --color-golden-pulse: #f9a825;      /* Primary Accent: Golden Pulse (Prediksi Utama, Highlight, Ikon) */
+    --color-golden-hover: #e69516;      /* Hover State Aksen Emas */
+    --color-ivory-mist: #fff8e1;        /* Secondary Base: Luxe Ivory Mist (Latar Hangat & Kontras) */
+    --color-bg-surface: #f8fafc;
     --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 }
 
-/* Aksesibilitas: Indikator Fokus Keyboard Terstandarisasi (R-32 & R-39) */
+/* Aksesibilitas & Navigasi: Smooth Scrolling Terstandarisasi */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem; /* Menjamin sticky navbar 80px tidak menutupi judul bagian */
+}
+
+/* Animasi Halus & Bertahap (Subtle Institutional Micro-Interactions) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Aksesibilitas: Indikator Fokus Keyboard Terstandarisasi (WCAG 2.1 AA) */
 :focus-visible {
-  outline: 2px solid #007de4;
+  outline: 2px solid #1e88e5;
   outline-offset: 2px;
 }
 
 button:focus-visible, a:focus-visible, input:focus-visible {
-  outline: 2px solid #007de4;
+  outline: 2px solid #1e88e5;
   outline-offset: 2px;
 }
 
@@ -39,7 +94,7 @@ input:user-valid:not(:placeholder-shown) {
   border-color: #10b981;
 }
 
-/* Custom Scrollbar Fungsional */
+/* Custom Scrollbar Fungsional & Halus */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
@@ -55,12 +110,12 @@ input:user-valid:not(:placeholder-shown) {
   background: #94a3b8;
 }
 
-/* Background Hero Tenang dan Profesional (DESIGN.md Netral #F3F6FB) */
+/* Background Hero dengan Gradasi Elegan Menggabungkan Foto Perpustakaan (bg.jpeg) */
 .hero-gradient-bg {
-  background: linear-gradient(180deg, #f3f6fb 0%, #edf3fa 100%);
+  background-color: #f8fafc;
 }
 
-/* Penghormatan Terhadap Pengaturan Aksesibilitas Gerak (R-39) */
+/* Penghormatan Terhadap Pengaturan Aksesibilitas Gerak */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

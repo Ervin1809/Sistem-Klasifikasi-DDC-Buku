@@ -7,10 +7,11 @@ export default function AboutSection() {
         
         {/* Header Bagian */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#007de4] mb-2 block">
-            Arsitektur Sistem
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#002072] text-[#f9a825] border border-[#f9a825]/40 text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-[#f9a825] shadow-xs shadow-amber-400/50" />
+            <span>Arsitektur Sistem</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#002072] tracking-tight">
             Alur Pipeline Klasifikasi Dua Tingkat
           </h2>
           <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -25,7 +26,7 @@ export default function AboutSection() {
           <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="w-8 h-8 rounded-lg bg-[#f0f7fd] text-[#007de4] font-bold text-xs flex items-center justify-center font-mono">
+                <span className="w-8 h-8 rounded-lg bg-[#fff8e1] text-[#002072] border border-[#f9a825]/50 font-bold text-xs flex items-center justify-center font-mono shadow-2xs">
                   01
                 </span>
                 <Binary className="w-5 h-5 text-slate-400" />
@@ -46,7 +47,7 @@ export default function AboutSection() {
           <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="w-8 h-8 rounded-lg bg-[#f0f7fd] text-[#007de4] font-bold text-xs flex items-center justify-center font-mono">
+                <span className="w-8 h-8 rounded-lg bg-[#fff8e1] text-[#002072] border border-[#f9a825]/50 font-bold text-xs flex items-center justify-center font-mono shadow-2xs">
                   02
                 </span>
                 <GitBranch className="w-5 h-5 text-slate-400" />
@@ -67,7 +68,7 @@ export default function AboutSection() {
           <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="w-8 h-8 rounded-lg bg-[#f0f7fd] text-[#007de4] font-bold text-xs flex items-center justify-center font-mono">
+                <span className="w-8 h-8 rounded-lg bg-[#fff8e1] text-[#002072] border border-[#f9a825]/50 font-bold text-xs flex items-center justify-center font-mono shadow-2xs">
                   03
                 </span>
                 <Layers className="w-5 h-5 text-slate-400" />
@@ -87,22 +88,22 @@ export default function AboutSection() {
         </div>
 
         {/* Jaminan Integritas Privasi (Zero Database Persistence) */}
-        <div className="rounded-xl bg-slate-900 text-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-800">
+        <div className="rounded-xl bg-[#002072] text-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-[#001755] shadow-xs">
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-5 h-5 text-[#fbd900]" />
+              <ShieldCheck className="w-5 h-5 text-[#f9a825]" />
             </div>
             <div>
               <h4 className="font-bold text-white text-base">
                 Jaminan Privasi & Zero Database Persistence
               </h4>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-200 mt-1 max-w-2xl leading-relaxed">
                 Seluruh komputasi berjalan murni di memori RAM server (*in-memory*). Berkas citra dan hasil inferensi tidak disimpan ke dalam basis data permanen dan dimusnahkan segera setelah respon dikirim.
               </p>
             </div>
           </div>
 
-          <div className="shrink-0 text-xs font-medium text-slate-400 border border-slate-700 rounded-md px-3 py-1.5 bg-slate-800">
+          <div className="shrink-0 text-xs font-medium text-blue-200 border border-blue-900/50 rounded-md px-3 py-1.5 bg-[#001755]">
             Akses Terbuka Tanpa Autentikasi
           </div>
         </div>
